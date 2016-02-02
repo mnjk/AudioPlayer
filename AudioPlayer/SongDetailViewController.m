@@ -21,6 +21,7 @@
     NSLog(@"%@",_songInfo);
     lbSongName.text = _songInfo._stName;
     
+    _DataModel = [[ModelManager SharedModel] getDataModelWithKey:@"PL_MODEL"];
     
     
 }
@@ -31,9 +32,67 @@
 }
 
   
+-(IBAction)addToPlayList:(id)sender{
+
+    @try {
+
+    if (_songInfo) {
+    
+        [_DataModel addSongToPlayListWithSongID:_songInfo];
+        
+    }else{
+    
+        NSLog(@"ADD : Something wrong ... :) ");
+    }
+    }
+    @catch (NSException *exception) {
+        
+        NSLog(@"REMOVE ALL : %@",[NSString stringWithFormat:@"%@" ,exception]);
+    }
+
+    
+}
+-(IBAction)removeFromPlayList:(id)sender{
+
+    @try {
+        
+    if (_songInfo) {
+        
+        [_DataModel deleteSongFromPlayPlist:_songInfo];
+        
+    }else{
+        
+        NSLog(@"DELETE : Something wrong ... :) ");
+    }
+        
+    }
+    @catch (NSException *exception) {
+        
+        NSLog(@"REMOVE ALL : %@",[NSString stringWithFormat:@"%@" ,exception]);
+    }
+    
+}
+
+-(IBAction)removeAllSongFromPlayList:(id)sender{
+
+    @try {
+     
+        NSMutableArray *lstPlayListSongs = [_DataModel getPlayList];
+        
+        if (lstPlayListSongs) {
+            [_DataModel deleteAllSongInPlayList];
+        }
+
+    }
+    @catch (NSException *exception) {
+        
+        NSLog(@"REMOVE ALL : %@",[NSString stringWithFormat:@"%@" ,exception]);
+    }
+    
+}
 
 /*
-#pragma mark - Navigation
+a mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
