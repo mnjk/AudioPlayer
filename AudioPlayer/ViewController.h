@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AudioModel.h"
+#import "SongDetailViewController.h"
+ 
+@interface ViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+{
+    AudioModel *_audioModel;
+}
+@property (nonatomic , strong) IBOutlet UITableView *_tvSongs;
 
-@interface ViewController : UIViewController
 
 
 @end
