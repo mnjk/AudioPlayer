@@ -34,22 +34,6 @@
   
 -(IBAction)addToPlayList:(id)sender{
 
-    @try {
-
-    if (_songInfo) {
-    
-        [_DataModel addSongToPlayListWithSongID:_songInfo];
-        
-    }else{
-    
-        NSLog(@"ADD : Something wrong ... :) ");
-    }
-    }
-    @catch (NSException *exception) {
-        
-        NSLog(@"REMOVE ALL : %@",[NSString stringWithFormat:@"%@" ,exception]);
-    }
-
     
 }
 -(IBAction)removeFromPlayList:(id)sender{
