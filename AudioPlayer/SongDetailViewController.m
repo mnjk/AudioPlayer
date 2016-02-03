@@ -35,6 +35,10 @@
 -(IBAction)addToPlayList:(id)sender{
 
     // updated code
+    if (1) {
+        
+    }
+    
     
 }
 -(IBAction)removeFromPlayList:(id)sender{
